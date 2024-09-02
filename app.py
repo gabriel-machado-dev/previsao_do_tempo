@@ -76,8 +76,8 @@ def extract_weather_data():
   for i, d in enumerate(div[:4]):
       day_data = d.text.split('\n')[0]
       day = d.text.split('\n')[1]
-      temp_max = d.text.split('\n')[2]
-      temp_min = d.text.split('\n')[3]
+      temp_max = d.text.split('\n')[3]
+      temp_min = d.text.split('\n')[2]
       porcentagem_chuva = d.text.split('\n')[4]
       cond = d.text.split('\n')[5]
 
