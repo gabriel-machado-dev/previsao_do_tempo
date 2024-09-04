@@ -8,6 +8,7 @@ import os
 from email.message import EmailMessage
 from dotenv import load_dotenv
 import logging as lg
+import re
 
 load_dotenv()
 lg.basicConfig(level=lg.ERROR, format='%(asctime)s - %(message)s')
@@ -184,6 +185,16 @@ def send_email(recipient_email):
         smtp.login(EMAIL_USER, EMAIL_PASSWORD)
         smtp.send_message(msg)
 
+def validate_email(email):
+    while True:
+        if re.findall(r'@.{1,8}\.com', email):
+            return email
+        else:
+            email = input('Email inválido, digite novamente: ')
+
 
 if __name__ == '__main__':
-    send_email('xxx')
+    recipient_email = input('Digite o email do destinatário: ')
+    recipient_email = validate_email(recipient_email)
+    send_email(recipient_email)
+    print('Email enviado com sucesso!')
